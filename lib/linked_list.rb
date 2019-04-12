@@ -79,8 +79,6 @@ class LinkedList
     p new_data
   end
 
-
-
   def insert(position, new_data)
     if position == 0
       prepend(new_data)
@@ -108,4 +106,19 @@ class LinkedList
     end
   end
 
+  def find(position)
+    node = find_node(position)
+    string_node(node, node.data)
+  end
+
+  ##Iteration 4 plan:
+  #Find: find_node method already finds the desired node at the position requested
+  #modify string_node method to be able to take an optional limit of number of elements to return
+
+  def includes?(search)
+    true if to_string.include?(search)
+  end
+
+  #Pop: find last node(node where next_node = nil). Return that node and then find the node
+  #at the previosu position and make that node.data = nil
 end
