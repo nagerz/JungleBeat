@@ -68,4 +68,44 @@ class LinkedList
     end
   end
 
+  def prepend(new_data)
+    if @head.nil?
+      @head = Node.new(new_data)
+    else
+      shifted_node = @head
+      @head = Node.new(new_data)
+      @head.next_node = shifted_node
+    end
+    p new_data
+  end
+
+
+
+  def insert(position, new_data)
+    if position == 0
+      prepend(new_data)
+    else
+      prior_node = find_node(position - 1)
+      shifted_node = find_node(position)
+
+      new_node = Node.new(new_data)
+      new_node.next_node = shifted_node
+      prior_node.next_node = new_node
+    end
+  end
+
+  def find_node(position)
+    counter = 0
+    if position == 0
+      @head
+    else
+      current_node = @head
+      while counter < position
+        current_node = current_node.next_node
+        counter += 1
+      end
+      current_node
+    end
+  end
+
 end
